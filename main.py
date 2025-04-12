@@ -19,7 +19,8 @@ def TCPHost():
     try:
         # Creates and binds a TCP socket
         host_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        host_socket.bind(('localhost', 12345))
+        yourIP = input("Enter your IPv4 address: ")
+        host_socket.bind((yourIP, 12345))
 
         # Listens for a connection to the socket
         host_socket.listen(1)
@@ -65,10 +66,12 @@ def TCPClient():
 
         # Creates and binds a TCP socket
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        client_socket.bind(('localhost', 54321))
+        yourIP = input("Enter your IPv4 address: ")
+        client_socket.bind((yourIP, 54321))
 
         # Connects the client to the host
-        client_socket.connect(('localhost', 12345))
+        IP = input("Input the IPv4 address you want to connect to: ")
+        client_socket.connect((IP, 12345))
         print("Connected!")
 
         # Calls TicTacToe and passes in client socket
